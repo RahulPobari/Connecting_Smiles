@@ -15,7 +15,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/CampusMinds.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.rahul_pobari.CampusMinds"
     },
     "web": {
       "bundler": "metro",
@@ -44,6 +45,12 @@
       "eas": {
         "projectId": "edb142b5-1f8c-4574-8340-39660744da88"
       }
+    },
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/edb142b5-1f8c-4574-8340-39660744da88"
     }
   }
 }
