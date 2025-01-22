@@ -49,23 +49,6 @@ const Profile = () => {
     }
   }
 
-  // const handleLogout = async () => {
-  //   Alert.alert('Confirm', "Are you sure you want to Logout?", [
-  //     {
-  //       text: 'Cancel',
-  //       onPress: () => console.log('Cancel Pressed'),
-  //       style: 'cancel'
-  //     },
-  //     {
-  //       text: 'Logout',
-  //       onPress: ()=> onLogout(),
-  //       style: 'destructive'
-  //         }
-  //   ])
-
-  // }
-
-
   const handleLogout = async () => {
     Alert.alert("Confirm", "Are you sure you want to Logout?", [
       { text: "Cancel", style: "cancel" },
@@ -104,7 +87,7 @@ const Profile = () => {
       <FlatList
         data={post}
         ListHeaderComponent={<UserHeader user={user} router={router} handleLogout={handleLogout} />}
-        ListHeaderComponentStyle={{marginBottom: 30}}
+        ListHeaderComponentStyle={{ marginBottom: 30 }}
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.listStyle}
         keyExtractor={item => item.id.toString()}
@@ -199,58 +182,6 @@ const UserHeader = ({ user, router, handleLogout }) => {
     </View>
   )
 }
-
-
-
-// const UserHeader = ({ user, handleLogout }) => {
-//   return (
-//       <View style={{ flex: 1, backgroundColor: "white", paddingHorizontal: wp(4) }}>
-//           <View>
-//               <Header title="Profile" mb={30} />
-//               <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
-//                   <Icon name="logout" color={theme.colors.rose} />
-//               </TouchableOpacity>
-//           </View>
-
-//           <View style={styles.container}>
-//               <View style={{ gap: 15 }}>
-//                   <View style={styles.avatarContainer}>
-//                       <Avatar
-//                           uri={user?.image || "https://via.placeholder.com/150"} // Default avatar
-//                           size={hp(12)}
-//                           rounded={theme.radius.xxl * 1.4}
-//                       />
-//                       <Pressable style={styles.editIcon} onPress={() => router.push("editProfile")}>
-//                           <Icon name="edit" strokeWidth={2.5} size={20} />
-//                       </Pressable>
-//                   </View>
-
-//                   <View style={{ alignItems: "center", gap: 4 }}>
-//                       <Text style={styles.userName}>{user?.name || "Guest User"}</Text>
-//                       <Text style={styles.infoText}>{user?.address || "No Address Provided"}</Text>
-//                   </View>
-
-//                   <View style={{ gap: 10 }}>
-//                       <View style={styles.info}>
-//                           <Icon name="mail" size={20} color={theme.colors.textLight} />
-//                           <Text style={styles.infoText}>{user?.email || "No Email Provided"}</Text>
-//                       </View>
-//                       <View style={styles.info}>
-//                           <Icon name="call" size={20} color={theme.colors.textLight} />
-//                           <Text style={styles.infoText}>{user?.phoneNumber || "No Phone Number"}</Text>
-//                       </View>
-//                       {user?.bio && (
-//                           <View style={styles.info}>
-//                               <Text style={styles.infoText}>{user.bio}</Text>
-//                           </View>
-//                       )}
-//                   </View>
-//               </View>
-//           </View>
-//       </View>
-//   );
-// };
-
 
 export default Profile
 
