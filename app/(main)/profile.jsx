@@ -70,7 +70,7 @@ const Profile = () => {
     if (!user) {
       const session = supabase.auth.session();
       if (session?.user?.id) {
-        fetchAndSetUser(session.user.id); // Fetch user data on mount
+        fetchAndSetUser(session.user.id);
       }
     }
   }, [user]);

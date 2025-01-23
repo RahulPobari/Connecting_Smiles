@@ -29,24 +29,23 @@ const editProfile = () => {
         address: ''
     });
 
-    
+
     useEffect(() => {
         if (currentUser) {
             // console.log('Current User Data:', currentUser);
-    
+
             const imagePath = currentUser.image || null;
             const publicImageSrc = getUserImageSrc(imagePath);
-    
-            // Update user state with database values
+
             setUser({
                 name: currentUser.name || '',
                 phoneNumber: currentUser.phoneNumber || '',
-                image: publicImageSrc?.uri || null, // Resolved image URL
+                image: publicImageSrc?.uri || null,
                 address: currentUser.address || '',
                 bio: currentUser.bio || ''
             });
         }
-    }, [currentUser]);    
+    }, [currentUser]);
 
     const onPickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -54,12 +53,12 @@ const editProfile = () => {
             allowsEditing: true,
             aspect: [1, 1],
             quality: 0.7,
-          });
-       
+        });
+
         if (!result.canceled) {
             setUser((prevUser) => ({
-              ...prevUser, // Spread the previous user state
-              image: result.assets[0].uri, // Update the image property
+                ...prevUser,
+                image: result.assets[0].uri,
             }));
         }
 
@@ -68,23 +67,23 @@ const editProfile = () => {
     const onSubmit = async () => {
         let userData = { ...user };
         let { name, phoneNumber, address, image, bio } = userData;
-    
+
         if (!name || !phoneNumber || !address || !bio || !image) {
             Alert.alert('Profile', "Please fill all the fields");
             return;
         }
         setLoading(true);
-    
+
         if (typeof image === 'string' && image.startsWith('file://')) {
             // console.log('Uploading image:', image);
-    
+
             const imageRes = await uploadFile('profiles', image, true);
-    
+
             if (imageRes.success) {
-                userData.image = imageRes.data; 
+                userData.image = imageRes.data;
                 setUser((prevUser) => ({
                     ...prevUser,
-                    image: getUserImageSrc(imageRes.data).uri, 
+                    image: getUserImageSrc(imageRes.data).uri,
                 }));
                 // console.log('Uploaded Image Path:', imageRes.data);
             } else {
@@ -93,34 +92,22 @@ const editProfile = () => {
             }
         }
         const res = await updateUser(currentUser?.id, userData);
-    
+
         if (res.success) {
-            setUserData({ ...currentUser, ...userData }); 
+            setUserData({ ...currentUser, ...userData });
             console.log('User profile updated successfully');
             router.back();
         } else {
             console.error('User update failed:', res);
         }
-    
+
         setLoading(false);
     };
-    
 
-    
-//     let imageSource = null;
-// if (user.image) {
-//     if (user.image.startsWith('file://')) {
-//         imageSource = { uri: user.image };
-//     } else {
-//         imageSource = { uri: getUserImageSrc(user.image)?.uri || user.image };
-//     }
-// }
-
-
-let imageSource = null;
-if (user.image) {
-    imageSource = { uri: user.image };
-}
+    let imageSource = null;
+    if (user.image) {
+        imageSource = { uri: user.image };
+    }
 
     return (
         <ScreenWrapper bg="white">

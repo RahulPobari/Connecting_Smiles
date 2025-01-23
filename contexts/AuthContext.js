@@ -7,31 +7,29 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
 
-    // Fetch user data and set in state
     const fetchAndSetUser = async (userId) => {
         const { success, data, msg } = await getUserData(userId);
         if (success) {
-            setUser(data); // Populate user state
+            setUser(data);
         } else {
             console.error("Failed to fetch user data:", msg);
         }
     };
 
     const setAuth = (authUser) => {
-        setUser(authUser); // Set basic auth data (e.g., after signup/login)
+        setUser(authUser);
     };
 
     const setUserData = (userData) => {
-        setUser({ ...userData }); // Update user state with additional info
+        setUser({ ...userData });
     };
 
-    // Automatically restore session and fetch user data on app start
     useEffect(() => {
         const { data: subscription } = supabase.auth.onAuthStateChange((event, session) => {
             if (session?.user) {
-                fetchAndSetUser(session.user.id); // Fetch user data using userId
+                fetchAndSetUser(session.user.id);
             } else {
-                setUser(null); // Clear user state on logout
+                setUser(null);
             }
         });
 

@@ -9,61 +9,61 @@ import Icon from '../assets/icons'
 const CommentItem = ({
     item,
     canDelete = false,
-    onDelete = ()=>{},
+    onDelete = () => { },
     highlight = false
 }) => {
 
     const createdAt = moment(item?.created_at).format('MMM d');
 
-    const handleDelete = ()=>{
-         Alert.alert("Confirm", "Are you sure you want to do this?", [
-             {
+    const handleDelete = () => {
+        Alert.alert("Confirm", "Are you sure you want to do this?", [
+            {
                 text: "Cancel",
                 onPress: () => console.log("Cancel Pressed"),
-                style: "cancel"   
-             },
-             {
+                style: "cancel"
+            },
+            {
                 text: "Delete",
                 onPress: () => onDelete(item),
-                style: "destructive"   
-             }
-            ]);
+                style: "destructive"
+            }
+        ]);
     }
-  return (
-    <View style={styles.container}>
-      <Avatar 
-      uri={item?.user?.image}
-      />
-      <View style={[styles.content, highlight && styles.highlight]}>
-        <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
-            <View style={styles.nameContainer}>
-                <Text style={styles.text}>
+    return (
+        <View style={styles.container}>
+            <Avatar
+                uri={item?.user?.image}
+            />
+            <View style={[styles.content, highlight && styles.highlight]}>
+                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <View style={styles.nameContainer}>
+                        <Text style={styles.text}>
+                            {
+                                item?.user?.name
+                            }
+                        </Text>
+                        <Text>.</Text>
+                        <Text style={[styles.text, { color: theme.colors.textLight }]}>
+                            {
+                                createdAt
+                            }
+                        </Text>
+                    </View>
                     {
-                        item?.user?.name
+                        canDelete && (
+                            <TouchableOpacity onPress={handleDelete}>
+                                <Icon name="delete" size={20} color={theme.colors.rose} />
+                            </TouchableOpacity>
+                        )
                     }
-                </Text>
-                <Text>.</Text>
-                <Text style={[styles.text ,{color: theme.colors.textLight}]}>
-                    {
-                        createdAt
-                    }
+
+                </View>
+                <Text style={[styles.text, { fontWeight: 'normal' }]}>
+                    {item?.text}
                 </Text>
             </View>
-            {
-                canDelete && (
-                    <TouchableOpacity onPress={handleDelete}>
-                    <Icon name="delete" size={20} color={theme.colors.rose} />
-                </TouchableOpacity>
-                )
-            }
-           
         </View>
-         <Text style={[styles.text , {fontWeight: 'normal'}]}>
-            {item?.text}
-         </Text>
-      </View>
-    </View>
-  )
+    )
 }
 
 export default CommentItem
@@ -88,12 +88,12 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderColor: theme.colors.dark,
         shadowColor: theme.colors.dark,
-        shadowOffset: {width: 0, height: 0},
+        shadowOffset: { width: 0, height: 0 },
         shadowRadius: 8,
         shadowOpacity: 0.3,
         elevation: 5
     },
-    nameContainer:{
+    nameContainer: {
         flexDirection: 'row',
         alignItems: 'center',
         gap: 3,

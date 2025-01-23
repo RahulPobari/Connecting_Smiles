@@ -24,7 +24,7 @@ const Welcome = () => {
         <View style={{ gap: 20 }}>
           <Text style={styles.title}>CampusMinds</Text>
           <Text style={styles.punchline}>
-          "Welcome to CampusMinds – the ultimate space for sharing ideas, collaborating on projects, and celebrating moments. Whether you’re working on your next big concept or reliving unforgettable events, CampusMinds connects you with your college community to inspire, create, and innovate together."
+            "Welcome to CampusMinds – the ultimate space for sharing ideas, collaborating on projects, and celebrating moments. Whether you’re working on your next big concept or reliving unforgettable events, CampusMinds connects you with your college community to inspire, create, and innovate together."
           </Text>
         </View>
 
@@ -63,56 +63,56 @@ const styles = StyleSheet.create(
   {
 
 
-  welcomeImage: {
-    width: wp(100),
-    height: hp(50),
-    alignSelf: 'center'
-  },
+    welcomeImage: {
+      width: wp(100),
+      height: hp(50),
+      alignSelf: 'center'
+    },
 
-  container: {
-    flex: 1,
-    backgroundColor: 'white',
-    justifyContent: 'space-around',
-    paddingHorizontal: wp(4),
-    alignItems: 'center'
-  },
-  title: {
-    fontSize: hp(4),
-    textAlign: 'center',
-    color: theme.colors.text,
-    fontWeight: theme.fonts.extraBold
+    container: {
+      flex: 1,
+      backgroundColor: 'white',
+      justifyContent: 'space-around',
+      paddingHorizontal: wp(4),
+      alignItems: 'center'
+    },
+    title: {
+      fontSize: hp(4),
+      textAlign: 'center',
+      color: theme.colors.text,
+      fontWeight: theme.fonts.extraBold
 
-  },
-  punchline: {
-    textAlign: 'justify',
-    paddingHorizontal: wp(10),
-    fontSize: hp(1.8),
-    color: theme.colors.text
-  },
-  footer: {
-    gap: 30,
-    width: '100%'
-  },
-  bottomTextContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center'
+    },
+    punchline: {
+      textAlign: 'justify',
+      paddingHorizontal: wp(10),
+      fontSize: hp(1.8),
+      color: theme.colors.text
+    },
+    footer: {
+      gap: 30,
+      width: '100%'
+    },
+    bottomTextContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center'
 
-  },
-  btn:{
-    marginLeft: '-30',
-    color: theme.colors.primaryDark,
-    fontWeight: theme.fonts.bold
+    },
+    btn: {
+      marginLeft: '-30',
+      color: theme.colors.primaryDark,
+      fontWeight: theme.fonts.bold
 
-  },
-  btns:{
-    marginRight: "40"
-  },
-  loginText:{
-    textAlign: 'center',
-    color: theme.colors.text,
-    fontSize: hp(1.6)
+    },
+    btns: {
+      marginRight: "40"
+    },
+    loginText: {
+      textAlign: 'center',
+      color: theme.colors.text,
+      fontSize: hp(1.6)
+    }
+
   }
-  
-}
 )

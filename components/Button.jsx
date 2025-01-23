@@ -25,7 +25,7 @@ const Button = ({
     if (loading) {
         return (
             <View style={[styles.button, buttonStyle, { backgroundColor: 'white' }]}>
-             <Loads />
+                <Loads />
             </View>
         )
 

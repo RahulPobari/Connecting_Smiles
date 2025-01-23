@@ -38,8 +38,8 @@ const PostCard = ({
     hasShadow = true,
     showMoreIcon = true,
     showDelete = false,
-    onDelete = () => {},
-    onEdit = () => {}
+    onDelete = () => { },
+    onEdit = () => { }
 }) => {
     const navigation = useNavigation();
 
@@ -74,7 +74,7 @@ const PostCard = ({
                 let updatedLikes = likes.filter(like => like.userId !== currentUser?.id);
                 setLikes(updatedLikes);
                 let res = await removePostLike(item?.id, currentUser?.id);
-        
+
                 if (!res.success) {
                     console.error('Error in liking post:', res.msg);
                     Alert.alert('Post', 'Something went wrong!');
@@ -111,19 +111,19 @@ const PostCard = ({
         Share.share(content);
     };
 
-    const handlePostDelete = ()=>{
-         Alert.alert("Confirm", "Are you sure you want to do this?", [
-                     {
-                        text: "Cancel",
-                        onPress: () => console.log("Cancel Pressed"),
-                        style: "cancel"   
-                     },
-                     {
-                        text: "Delete",
-                        onPress: () => onDelete(item),
-                        style: "destructive"   
-                     }
-                    ]);
+    const handlePostDelete = () => {
+        Alert.alert("Confirm", "Are you sure you want to do this?", [
+            {
+                text: "Cancel",
+                onPress: () => console.log("Cancel Pressed"),
+                style: "cancel"
+            },
+            {
+                text: "Delete",
+                onPress: () => onDelete(item),
+                style: "destructive"
+            }
+        ]);
     }
 
     const createdAt = moment(item?.created_at).format('MMM D');
@@ -167,9 +167,9 @@ const PostCard = ({
             <View style={styles.content}>
                 <View style={styles.postBody}>
                     {item?.body && (
-                        <RenderHTML 
-                            contentWidth={wp(100)} 
-                            source={{ html: item?.body }} 
+                        <RenderHTML
+                            contentWidth={wp(100)}
+                            source={{ html: item?.body }}
                             tagsStyles={tagsStyles}
                         />
                     )}
@@ -187,12 +187,12 @@ const PostCard = ({
 
                 {/* Post Video */}
                 {item?.file?.includes('postVideos') && (
-                    <Video 
-                        style={[styles.postMedia, { height: hp(30) }]} 
-                        source={getSupabaseFileUrl(item?.file)} 
-                        useNativeControls 
-                        resizeMode="cover" 
-                        isLooping 
+                    <Video
+                        style={[styles.postMedia, { height: hp(30) }]}
+                        source={getSupabaseFileUrl(item?.file)}
+                        useNativeControls
+                        resizeMode="cover"
+                        isLooping
                     />
                 )}
             </View>
@@ -201,11 +201,11 @@ const PostCard = ({
             <View style={styles.footer}>
                 <View style={styles.footerBottom}>
                     <TouchableOpacity onPress={onLike}>
-                        <Icon 
-                            name="heart" 
-                            size={24} 
-                            fill={liked ? theme.colors.rose : 'transparent'} 
-                            color={liked ? theme.colors.rose : theme.colors.textLight} 
+                        <Icon
+                            name="heart"
+                            size={24}
+                            fill={liked ? theme.colors.rose : 'transparent'}
+                            color={liked ? theme.colors.rose : theme.colors.textLight}
                         />
                     </TouchableOpacity>
                     <Text style={styles.count}>

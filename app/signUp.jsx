@@ -20,98 +20,98 @@ const signUp = () => {
     const passwordRef = useRef("");
     const [loading, setloading] = useState(false);
 
-    const onSubmit = async() =>{
-            if (!emailRef.current || !passwordRef.current || !nameRef.current) {
-                Alert.alert('SignUp' , "Please fill all the fields!");
-            }
+    const onSubmit = async () => {
+        if (!emailRef.current || !passwordRef.current || !nameRef.current) {
+            Alert.alert('SignUp', "Please fill all the fields!");
+        }
 
-            let names = nameRef.current.trim();
-            let email = emailRef.current.trim();
-            let password = passwordRef.current.trim();
+        let names = nameRef.current.trim();
+        let email = emailRef.current.trim();
+        let password = passwordRef.current.trim();
 
-            setloading(true);
+        setloading(true);
 
-            const {data: {session}, error} = await supabase.auth.signUp({
-               email,
-               password,
-               options: {
-               data: {
-                name: names
+        const { data: { session }, error } = await supabase.auth.signUp({
+            email,
+            password,
+            options: {
+                data: {
+                    name: names
                 }
             }
 
-             });
+        });
 
-             setloading(false);
+        setloading(false);
 
-            //  console.log('session : ', session);
-            //  console.log('error : ', error);
-            //  console.log('name : ', name);
-             
-             if(error){
-                Alert.alert('Sign up ', error.message)
-             }
+        //  console.log('session : ', session);
+        //  console.log('error : ', error);
+        //  console.log('name : ', name);
+
+        if (error) {
+            Alert.alert('Sign up ', error.message)
+        }
 
     }
 
-  return (
+    return (
 
-    <ScreenWrapper bg="white">
-        <StatusBar style='dark'/>
-        <View style={styles.container}>
-            <BackButton router={router}/>
-          
-            {/* WELCOME TEXT */}
+        <ScreenWrapper bg="white">
+            <StatusBar style='dark' />
+            <View style={styles.container}>
+                <BackButton router={router} />
 
-            <View>
-                <Text style={styles.welcomeText}>Let's</Text>
-                <Text style={styles.welcomeText}>Get Started</Text>
+                {/* WELCOME TEXT */}
+
+                <View>
+                    <Text style={styles.welcomeText}>Let's</Text>
+                    <Text style={styles.welcomeText}>Get Started</Text>
+                </View>
+
+                {/* FORM */}
+                <View style={styles.form}>
+                    <Text style={{ fontSize: hp(1.5), color: theme.colors.text }}>
+                        Please fill the details to create a new account
+                    </Text>
+
+                    <Input
+                        icon={<Icon name="user" size={26} strokeWidth={1.6} />}
+                        placeholder='Enter Your Name'
+                        onChangeText={value => nameRef.current = value}
+                    />
+                    <Input
+                        icon={<Icon name="mail" size={26} strokeWidth={1.6} />}
+                        placeholder='Enter Your Email'
+                        onChangeText={value => emailRef.current = value}
+                    />
+
+                    <Input
+                        icon={<Icon name="lock" size={26} strokeWidth={1.6} />}
+                        placeholder='Enter Your Password'
+                        secureTextEntry
+                        onChangeText={value => passwordRef.current = value}
+                    />
+
+
+                    <Button title={'Sign up'} loading={loading} onPress={onSubmit} />
+
+                </View>
+
+                {/* FOOTER */}
+
+                <View style={styles.footer}>
+                    <Text style={styles.footerText}>
+                        Already have an account?
+                    </Text>
+                    <Pressable onPress={() => router.push('login')}>
+                        <Text style={[styles.footerText, { color: theme.colors.primaryDark, fontWeight: theme.fonts.bold }]}>Login</Text>
+                    </Pressable>
+                </View>
+
             </View>
 
-            {/* FORM */}
-            <View style={styles.form}>
-                <Text style={{fontSize: hp(1.5), color: theme.colors.text}}>
-                    Please fill the details to create a new account
-                </Text>
-
-                <Input 
-                icon={<Icon name="user" size={26} strokeWidth={1.6} />}
-                placeholder= 'Enter Your Name'
-                onChangeText= {value=> nameRef.current = value}
-                />
-                <Input 
-                icon={<Icon name="mail" size={26} strokeWidth={1.6} />}
-                placeholder= 'Enter Your Email'
-                onChangeText= {value=> emailRef.current = value}
-                />
-
-                <Input 
-                icon={<Icon name="lock" size={26} strokeWidth={1.6} />}
-                placeholder= 'Enter Your Password'
-                secureTextEntry
-                onChangeText= {value=> passwordRef.current = value}
-                />
-
-               
-                <Button title={'Sign up'} loading={loading} onPress={onSubmit}/>
-
-            </View>
-
-            {/* FOOTER */}
-
-            <View style = {styles.footer}>
-                <Text style = {styles.footerText}>
-                   Already have an account?
-                </Text>
-                <Pressable onPress={() => router.push('login')}>
-                    <Text style = {[styles.footerText, {color: theme.colors.primaryDark, fontWeight: theme.fonts.bold}]}>Login</Text>
-                </Pressable>
-            </View>
-
-        </View>
-
-    </ScreenWrapper>
-  )
+        </ScreenWrapper>
+    )
 }
 
 export default signUp

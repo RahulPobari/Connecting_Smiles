@@ -1,5 +1,3 @@
-
-
 import { View, Text, LogBox } from 'react-native';
 import React, { useEffect } from 'react';
 import { Stack, useRouter } from 'expo-router';
@@ -27,7 +25,7 @@ const MainLayout = () => {
 
       if (session) {
         setAuth(session.user);
-        updateUserData(session.user); // Pass the session user to updateUserData
+        updateUserData(session.user);
         router.replace('/home');
       } else {
         setAuth(null);
@@ -56,10 +54,10 @@ const MainLayout = () => {
       }}
     >
       <Stack.Screen
-      name="(main)/postDetails"
-      options={{
-        presentation: 'modal'
-      }}
+        name="(main)/postDetails"
+        options={{
+          presentation: 'modal'
+        }}
       />
     </Stack>
   );

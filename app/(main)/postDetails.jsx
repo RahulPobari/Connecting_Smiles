@@ -31,10 +31,10 @@ const PostDetails = () => {
     if (payload.new) {
       console.log('New comment added:', payload.new);
       let newComment = { ...payload.new };
-  
+
       let res = await getUserData(newComment.userId);
       newComment.user = res.success ? res.data : {};
-  
+
       setPost((prevPost) => {
         return {
           ...prevPost,
@@ -45,7 +45,7 @@ const PostDetails = () => {
       console.error('Payload does not contain a new comment');
     }
   };
-  
+
   useEffect(() => {
     let CommentChannel = supabase
       .channel('comments')
@@ -56,14 +56,14 @@ const PostDetails = () => {
         filter: `postId=eq.${postId}`,
       }, handleNewComment)
       .subscribe();
-  
+
     getPostDetails();
-  
+
     return () => {
       supabase.removeChannel(CommentChannel);
     };
   }, []);
-  
+
 
   const getPostDetails = async () => {
     //fetch the post details 
@@ -91,13 +91,13 @@ const PostDetails = () => {
     setLoading(false);
     if (res.success) {
 
-      if(user.id!=post.userId){
+      if (user.id != post.userId) {
         // send notifcation 
         let notify = {
           senderId: user.id,
           receiverId: post.userId,
           title: "Comment on your post",
-          data: JSON.stringify({postId: post.id, commentId: res?.data?.id})
+          data: JSON.stringify({ postId: post.id, commentId: res?.data?.id })
         }
         createNotification(notify);
       }
@@ -111,20 +111,20 @@ const PostDetails = () => {
     }
   }
 
-  const onDeletePost = async (item) =>{
+  const onDeletePost = async (item) => {
     //delete post
     let res = await removePost(post?.id);
-    if(res.success){
+    if (res.success) {
       router.back();
     }
-    else{
+    else {
       Alert.alert('Error deleting post');
     }
   }
 
-  const onEditPost = async (item) =>{
+  const onEditPost = async (item) => {
     router.back();
-    router.push({pathname: 'newPost', params: {...item}});
+    router.push({ pathname: 'newPost', params: { ...item } });
   }
 
   if (startLoading) {
@@ -160,7 +160,7 @@ const PostDetails = () => {
   }
 
 
- 
+
   return (
     <ScreenWrapper>
       <View style={styles.container}>
@@ -170,7 +170,7 @@ const PostDetails = () => {
             currentUser={user}
             router={router}
             hasShadow={false}
-            showMoreIcon= {false}
+            showMoreIcon={false}
             showDelete={true}
             onDelete={onDeletePost}
             onEdit={onEditPost}
@@ -209,7 +209,7 @@ const PostDetails = () => {
                   key={comment?.id?.toString()}
                   item={comment}
                   onDelete={onDeleteComment}
-                  highlight = {comment.id == commentId}
+                  highlight={comment.id == commentId}
                   canDelete={user.id == comment.userId || user.id == post.userId}
                 />
               )

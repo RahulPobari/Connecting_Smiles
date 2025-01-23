@@ -116,11 +116,11 @@ const Home = () => {
     }
   };
   const refreshPosts = async () => {
-    setRefreshing(true); 
-    setPosts([]); 
-    setHasMore(true); 
-    limit = 0; 
-    await getPosts(); 
+    setRefreshing(true);
+    setPosts([]);
+    setHasMore(true);
+    limit = 0;
+    await getPosts();
     setRefreshing(false);
   };
 
@@ -213,9 +213,9 @@ const Home = () => {
           renderItem={({ item }) => <PostCard item={item} currentUser={user} router={router} />}
           refreshControl={
             <RefreshControl
-              refreshing={refreshing} // Show the loader
-              onRefresh={refreshPosts} // Trigger the refresh action
-              colors={[theme.colors.primary]} // Customize loader color
+              refreshing={refreshing}
+              onRefresh={refreshPosts}
+              colors={[theme.colors.primary]}
             />
           }
           onEndReached={getPosts}

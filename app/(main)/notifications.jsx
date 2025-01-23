@@ -11,19 +11,19 @@ import NotificationItem from '../../components/NotificationItem';
 import Header from '../../components/Header';
 
 const Notifications = () => {
-  const[notifications, setNotifications] = useState([]);
-  const {user} = useAuth();
+  const [notifications, setNotifications] = useState([]);
+  const { user } = useAuth();
   const router = useRouter();
 
-  useEffect(()=>{
+  useEffect(() => {
 
-    getNotifications(); 
+    getNotifications();
 
   }, []);
 
-  const getNotifications = async ()=>{
-      let res = await fetchNotification(user.id);
-      if(res.success)  setNotifications(res.data);
+  const getNotifications = async () => {
+    let res = await fetchNotification(user.id);
+    if (res.success) setNotifications(res.data);
 
   }
 
@@ -33,19 +33,19 @@ const Notifications = () => {
         <Header title="Notifications" />
         <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.listStyle}>
           {
-            notifications.map(item=>{
-              return(
+            notifications.map(item => {
+              return (
                 <NotificationItem
-                item={item}
-                key={item?.id}
-                router={router}
+                  item={item}
+                  key={item?.id}
+                  router={router}
                 />
               )
             })
           }
 
           {
-            notifications.length==0 && (
+            notifications.length == 0 && (
               <Text style={styles.noData}>No notifications yet</Text>
             )
           }

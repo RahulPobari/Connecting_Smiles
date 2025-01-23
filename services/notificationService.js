@@ -29,15 +29,15 @@ export const fetchNotification = async (receiverId) => {
                 *,
                 sender: senderId(id, name, image)
             `)
-           .eq('receiverId', receiverId)
-           .order("created_at", {ascending: false});
+            .eq('receiverId', receiverId)
+            .order("created_at", { ascending: false });
 
         if (error) {
             console.log("fetch Notifcation error", error);
             return { success: false, msg: 'Could not fetch notification Details' };
         }
 
-        return{success: true, data: data}
+        return { success: true, data: data }
 
     } catch (error) {
         console.log("fetch notification error", error);

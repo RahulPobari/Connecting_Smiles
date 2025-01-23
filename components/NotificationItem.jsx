@@ -12,47 +12,47 @@ const NotificationItem = ({
     router
 }) => {
 
-    const handleClick = ()=>{
+    const handleClick = () => {
         /// open post detail
-        let {postId, commentId} = JSON.parse(item?.data);
-        router.push({pathname: 'postDetails', params: {postId, commentId}})
+        let { postId, commentId } = JSON.parse(item?.data);
+        router.push({ pathname: 'postDetails', params: { postId, commentId } })
     }
 
     const createdAt = moment(item.createdAt).format('MMM D');
-  return (
-    <TouchableOpacity style={styles.container} onPress={handleClick}>
-      <Avatar
-      uri={item?.sender?.image}
-      size={hp(5)}
-      />
+    return (
+        <TouchableOpacity style={styles.container} onPress={handleClick}>
+            <Avatar
+                uri={item?.sender?.image}
+                size={hp(5)}
+            />
 
-      <View style={styles.nameTitle}>
-        <Text style={styles.text}>
-            {
-                item?.sender?.name
-            }
-        </Text>
-        <Text style={[styles.text, {color: theme.colors.textDark}]}>
-            {
-                item?.title
-            }
-        </Text>
-      </View>
+            <View style={styles.nameTitle}>
+                <Text style={styles.text}>
+                    {
+                        item?.sender?.name
+                    }
+                </Text>
+                <Text style={[styles.text, { color: theme.colors.textDark }]}>
+                    {
+                        item?.title
+                    }
+                </Text>
+            </View>
 
-      <Text style={[styles.text, {color: theme.colors.textLight}]}>
-        {
-            createdAt
-        }
-      </Text>
-    </TouchableOpacity>
-  )
+            <Text style={[styles.text, { color: theme.colors.textLight }]}>
+                {
+                    createdAt
+                }
+            </Text>
+        </TouchableOpacity>
+    )
 }
 
 export default NotificationItem
 
 const styles = StyleSheet.create({
 
-    container:{
+    container: {
         flex: 1,
         flexDirection: 'row',
         alignItems: 'center',
