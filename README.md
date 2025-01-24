@@ -51,20 +51,12 @@ Ensure you have the following installed:
    npm install
    ```
 
-3. **Set Up Environment Variables**:
-   - Create a `.env` file in the root directory.
-   - Add your Supabase credentials:
-     ```env
-     SUPABASE_URL=your-supabase-url
-     SUPABASE_ANON_KEY=your-supabase-anon-key
-     ```
-
-4. **Start the Expo Server**:
+3. **Start the Expo Server**:
    ```bash
-   expo start
+   npx expo start
    ```
 
-5. **Run on Your Device**:
+4. **Run on Your Device**:
    - Download the **Expo Go** app from the App Store (iOS) or Google Play (Android).
    - Scan the QR code displayed in your terminal or browser to open the app.
 
