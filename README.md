@@ -1,6 +1,6 @@
-# CampusMinds
+# Connecting Smiles
 
-Welcome to **CampusMinds** – the ultimate platform for connecting your college community! 🚀
+Welcome to **Connecting Smiles** – the ultimate platform for connecting your college community! 🚀
 
 CampusMinds is designed to foster collaboration, celebrate achievements, and turn your creative ideas into reality. Whether you're brainstorming your next big project or cherishing unforgettable memories, CampusMinds helps you stay connected and inspired. Built with **React Native** and **Expo**, this app ensures a seamless and delightful experience for every user.
 
