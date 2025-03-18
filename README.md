@@ -1,17 +1,20 @@
-# Connecting Smiles
+# 😊 Connecting Smiles
 
-Welcome to **Connecting Smiles** – the ultimate platform for connecting your college community! 🚀
-
-CampusMinds is designed to foster collaboration, celebrate achievements, and turn your creative ideas into reality. Whether you're brainstorming your next big project or cherishing unforgettable memories, CampusMinds helps you stay connected and inspired. Built with **React Native** and **Expo**, this app ensures a seamless and delightful experience for every user.
+Connecting Smiles is a social media platform where users can share images, videos, and memorable moments with their friends. 📸🎥 Stay connected, cherish memories, and engage with an interactive community!
 
 ## 🌟 Features
 
-- **Idea Sharing**: Collaborate with peers and share innovative concepts with your community.
-- **Project Collaboration**: Work on group projects, assign tasks, and keep everyone on track.
-- **Event Highlights**: Relive and celebrate your college's best moments through shared stories and photos.
-- **Real-Time Updates**: Stay informed with notifications and updates about ongoing activities.
-- **Secure Backend**: Powered by **Supabase**, ensuring reliable data storage and seamless authentication.
-- **Cross-Platform Support**: Designed for both iOS and Android devices for maximum accessibility.
+- 📷 **Image & Video Sharing** – Upload and share your favorite moments effortlessly.
+- 💬 **Engagement & Reactions** – Like, comment, and interact with posts.
+- 👥 **Friend Connections** – Follow friends and discover new connections.
+- 🔒 **Secure Authentication** – Sign up and log in using Supabase authentication.
+- 🌍 **Global Access** – Available across devices with seamless synchronization.
+
+## 🛠️ Tech Stack
+
+- ⚛️ **React Native** – Cross-platform mobile app development.
+- 🗄️ **Supabase** – Backend services, authentication, and database.
+- ☁️ **Cloud Storage** – Store and serve media files efficiently.
 
 ---
 
